@@ -1,11 +1,10 @@
 function processReleaseData(releases) {
-  return releases.filter(release => {
-    if (release['id'] && release['title'])return release;
-  }).map(release => {
-    let result = {};
-    result['id'] = release['id'];
-    result['title'] = release['title']
-    return result;
+  return releases.filter(release => release['id'] && release['title'])
+  .map(release => {
+    return {
+      id: release.id,
+      title: release.title,
+    }
   });
 }
 
