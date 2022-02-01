@@ -18,7 +18,16 @@ map filtered array to return only k/v pairs id & title
 return filtered & transformed array
 */
 
-
+function processReleaseData(releases) {
+  return releases.filter(release => {
+    if (release['id'] && release['title'])return release;
+  }).map(release => {
+    let result = {};
+    result['id'] = release['id'];
+    result['title'] = release['title']
+    return result;
+  });
+}
 
 let newReleases = [
   {
@@ -52,3 +61,5 @@ let newReleases = [
     'bookmark': [{ id:432534, time:65876586 }],
   },
 ];
+
+console.log(processReleaseData(newReleases));
