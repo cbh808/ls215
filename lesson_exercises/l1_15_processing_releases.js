@@ -1,5 +1,7 @@
 function processReleaseData(releases) {
-  return releases.filter(release => release['id'] && release['title'])
+  return releases.filter(release => {
+    return (release['id'] || release['id'] === 0) && release['title'];
+  })
   .map(release => {
     return {
       id: release.id,
