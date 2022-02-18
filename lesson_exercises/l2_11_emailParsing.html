@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LS215 L2_Mail Count</title>
+  </head>
+  <body>
+    <script src="https://dbdwvr6p7sskw.cloudfront.net/210/files/email_data_v2.js"></script>
+    <script>
+      function mailCount(emailData) {
+        let messages = emailData.split('##||##');
+        let emailDates = messages.map(message => message.split('#/#')[2]);
+        console.log(emailDates);
+        console.log(`Count of Email: ${messages.length}`);
+        console.log('Date Range: ' + getDateRange(emailDates));
+      }
+      // "\nDate: 07-03-2016"
+      function getDateRange(emailDates) {
+        let regex = /\d{2}-\d{2}-\d{4}/
+        let dateStrings = emailDates.map(datestr => {
+          return regex.exec(datestr)[0];
+        })
+        let dates = dateStrings.map(datestr => {
+          let dateParts = datestr.split('-');
+          let month = dateParts[0];
+          let day = dateParts[1];
+          let year = dateParts[2];
+          return new  Date(year, month, day);
+        })
+
+        return getMinMaxDates(dates);
+      }
+
+      function getMinMaxDates(dates) {
+        sortedDates = dates.sort((a, b) => a.valueOf() - b.valueOf());
+        console.log(sortedDates);
+        return sortedDates[0].toDateString() + '-' + sortedDates[sortedDates.length - 1].toDateString();
+      }
+
+      // // read dates out of object into array
+      // // sort array using numbers for sorting, not strings
+      // // output messages to console
+      mailCount(emailData);
+    </script>
+  </body>
+</html>
