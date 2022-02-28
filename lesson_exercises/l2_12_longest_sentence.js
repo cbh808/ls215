@@ -36,6 +36,7 @@ function longestSentence(text) {
   });
   let maxWords = Math.max(...sentenceLengths);
   let idxLongest = sentenceLengths.indexOf(maxWords);
+  
   console.log(sentences[idxLongest].trim() + endOfStrings[idxLongest]);
   console.log(`The longest sentence has ${maxWords} words.`);
 }
