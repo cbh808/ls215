@@ -35,9 +35,6 @@ input: string, representing list of numbers in short-hand form
             need to find min / max and add all numbers inclusive to result list
 output: array, full list of numbers derived from short-form numbers and ranges
 
-
-
-
 Data Structures:
 input: string => parse string to derive partial & missing nums => add to array
 "1, 3, 7, 2, 4, 1" --> ['1', '3', '7', '2', '4', '1'] => [1, 3, 7, 12, 14, 21]

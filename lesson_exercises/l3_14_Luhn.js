@@ -50,14 +50,15 @@ Algorithm:
 */
 function validLuhn(string) {
     let numbers = string.replace(/[\D]/g, '').split('').map(Number);
+    if (numbers.length === 0) return false;
+
     let transformed = numbers.reverse().map((num, idx) => {
         if (idx % 2 === 0) return num;
         return (num * 2 > 9 ? num * 2 - 9  : num * 2);
     });
-    if (transformed.length === 0) return false;
+
     return transformed.reduce((sum, value) => sum += value) % 10 === 0;
 }
-
 
 console.log(validLuhn("2323 2005 7766 3554")=== true);
 console.log(validLuhn("232y3 x2005 7,766 3554!")=== true);
